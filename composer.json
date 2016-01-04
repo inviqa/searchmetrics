@@ -1,0 +1,12 @@
+{
+    "name": "chapabu/searchmetrics-api",
+    "description": "Searchmetrics API v3 integration",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chapabu",
+            "email": "chapabu101@gmail.com"
+        }
+    ],
+    "require": {}
+}
