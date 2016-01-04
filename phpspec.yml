@@ -1,0 +1,4 @@
+suites:
+  searchmetrics-api:
+    namespace: Searchmetrics
+    psr4_prefix: Searchmetrics
