@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <ruleset name="Searchmetrics">
+
   <description>Coding standards for the Searchmetrics API library.</description>
 
-  <file>./src</file>
-
-  <arg name="report" value="summary"/>
+  <exclude-pattern type="relative">^spec/*</exclude-pattern>
 
   <rule ref="PSR2"/>
+
 </ruleset>
