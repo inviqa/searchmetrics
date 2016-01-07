@@ -91,4 +91,34 @@ class ConnectionConfig
     {
         return $this->apiVersion;
     }
+
+    /**
+     * Get the full URL to the Searchmetrics API based on the coniguration. This is the URL that will be used for any
+     * subsequent requests.
+     *
+     * At the time of writing, the Searchmetrics API does not support HTTPS. If you add HTTPS, then it will not
+     * be corrected, so it may result in an error.
+     *
+     * @return string
+     *   The full URL with a non-secure HTTP prepended if not provided.
+     */
+    public function getFullApiUrl()
+    {
+
+        $url = [];
+
+        if (preg_match('/^https?:\/\//', $this->apiUrl) !== 1) {
+            // We're only adding one slash here as the later implosion will add
+            // the second.
+            $url[] = 'http:/';
+        }
+
+        array_push(
+            $url,
+            $this->apiUrl,
+            $this->apiVersion
+        );
+
+        return implode('/', $url);
+    }
 }
