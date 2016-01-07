@@ -46,7 +46,7 @@ class GuzzleConnection implements ConnectionFactory
         $this->handlerStack->push($oauthMiddleware);
 
         return new Client([
-            'base_uri' => $this->config->getApiUrl(),
+            'base_uri' => $this->config->getFullApiUrl(),
             'handler' => $this->handlerStack,
             'auth' => 'oauth'
         ]);

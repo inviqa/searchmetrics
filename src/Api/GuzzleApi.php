@@ -19,7 +19,7 @@ use Teapot\StatusCode;
  *
  * @package Searchmetrics\Api
  */
-abstract class GuzzleApiBase implements ApiBase
+class GuzzleApi implements ApiBase
 {
     /**
      * @var \GuzzleHttp\ClientInterface
@@ -50,17 +50,37 @@ abstract class GuzzleApiBase implements ApiBase
     /**
      * @inheritDoc
      */
-    public function makePostRequest($url, $body = [])
+    public function makePostRequest($endpoint, $body = [])
     {
-        // TODO: Implement makePostRequest() method.
+
+        $response = $this->httpClient->request(
+            'post',
+            $this->getApiEndpointUrl($endpoint),
+            [
+                'body' => $body,
+            ]
+        );
+
+        return $this->getResponse($response);
+
     }
 
     /**
      * @inheritDoc
      */
-    public function makeGetRequest($url, $query_params = [])
+    public function makeGetRequest($endpoint, $query_params = [])
     {
-        // TODO: Implement makeGetRequest() method.
+
+        $response = $this->httpClient->request(
+            'get',
+            $this->getApiEndpointUrl($endpoint),
+            [
+                'query' => $query_params,
+            ]
+        );
+
+        return $this->getResponse($response);
+
     }
 
     /**
@@ -76,14 +96,12 @@ abstract class GuzzleApiBase implements ApiBase
      *   The JSON response from the Searchmetrics API, or an empty array if no
      *   response was given or if the status code was incorrect.
      */
-    private function makeRequest(RequestInterface $request, $method = 'GET')
+    private function getResponse(ResponseInterface $response)
     {
-
-        $response = $this->httpClient->send($request);
 
         $this->checkStatusCode($response);
 
-        $json_response = json_decode($this->body(), true);
+        $json_response = json_decode($response->getBody(), true);
 
         return $json_response;
 
@@ -101,7 +119,7 @@ abstract class GuzzleApiBase implements ApiBase
      * @return int
      *   200 if the response is OK. Otherwise an exception is thrown.
      */
-    private function checkStatusCode(ResponseInterface $response)
+    protected function checkStatusCode(ResponseInterface $response)
     {
 
         $status_code = $response->getStatusCode();
@@ -117,5 +135,19 @@ abstract class GuzzleApiBase implements ApiBase
 
         return $status_code;
 
+    }
+
+    /**
+     * Get the entire URL including endpoint.
+     *
+     * @param string $endpoint
+     *   The endpoint you wish to query (e.g.. ResearchKeywordsGetListRelatedKeywords)
+     *
+     * @return string
+     *   The full URL to the endpoint you want to query.
+     */
+    protected function getApiEndpointUrl($endpoint)
+    {
+        return '/' . $endpoint . '.json';
     }
 }
