@@ -11,6 +11,11 @@ use Teapot\StatusCode;
 use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Message\ResponseInterface;
 
+/**
+ * Class GuzzleConnection.
+ *
+ * @package Searchmetrics\Connection
+ */
 class GuzzleConnection implements Connection
 {
 
