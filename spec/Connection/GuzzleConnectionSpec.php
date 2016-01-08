@@ -9,6 +9,7 @@ use GuzzleHttp\Subscriber\Mock;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Searchmetrics\Config\ConnectionConfig;
+use Searchmetrics\Connection\Connection;
 use Searchmetrics\Connection\ConnectionFactory;
 use Teapot\HttpException;
 use Teapot\StatusCode;
@@ -24,6 +25,11 @@ class GuzzleConnectionSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Searchmetrics\Connection\GuzzleConnection');
+    }
+
+    function it_should_implement_a_base_connection_interface()
+    {
+        $this->shouldImplement(Connection::class);
     }
 
     function it_returns_a_guzzle_client_instance()

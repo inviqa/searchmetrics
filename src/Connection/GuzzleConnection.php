@@ -11,12 +11,7 @@ use Teapot\StatusCode;
 use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Message\ResponseInterface;
 
-/**
- * Class GuzzleConnection.
- *
- * @package Searchmetrics\Connection
- */
-class GuzzleConnection
+class GuzzleConnection implements Connection
 {
 
     /**
@@ -48,10 +43,9 @@ class GuzzleConnection
     }
 
     /**
-     * Get the connection instance to the established Searchmetrics session.
+     * {inheritDoc}
      *
      * @return \GuzzleHttp\Client
-     *   A Guzzle client instance that represents the connection to Searchmetrics.
      */
     public function getClient()
     {
@@ -136,15 +130,7 @@ class GuzzleConnection
     }
 
     /**
-     * Make a POST request to the Searchmetrics API.
-     *
-     * @param string $endpoint
-     *   The endpoint to make the request against.
-     * @param array $body
-     *   The data to send to the API.
-     *
-     * @return array
-     *   Result of the API request.
+     * {inheritDoc}
      */
     public function makePostRequest($endpoint, $body = [])
     {
@@ -162,15 +148,7 @@ class GuzzleConnection
     }
 
     /**
-     * Make a GET request to the Searchmetrics API.
-     *
-     * @param string $endpoint
-     *   The endpoint to make the request against.
-     * @param array $query
-     *   The query to send to the API.
-     *
-     * @return array
-     *   Result of the API request.
+     * {inheritDoc}
      */
     public function makeGetRequest($endpoint, $query_params = [])
     {
