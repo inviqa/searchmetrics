@@ -151,7 +151,7 @@ class GuzzleConnection
 
         $request = $this->httpClient->createRequest(
             'post',
-            $this->getApiEndpointUrl($endpoint),
+            $this->config->getApiEndpointUrl($endpoint),
             [
                 'body' => $body,
             ]
@@ -177,7 +177,7 @@ class GuzzleConnection
 
         $request = $this->httpClient->createRequest(
             'get',
-            $this->getApiEndpointUrl($endpoint),
+            $this->config->getApiEndpointUrl($endpoint),
             [
                 'query' => $query_params,
             ]
@@ -243,17 +243,5 @@ class GuzzleConnection
 
     }
 
-    /**
-     * Get the entire URL including endpoint.
-     *
-     * @param string $endpoint
-     *   The endpoint you wish to query (e.g.. ResearchKeywordsGetListRelatedKeywords)
-     *
-     * @return string
-     *   The full URL to the endpoint you want to query.
-     */
-    protected function getApiEndpointUrl($endpoint)
-    {
-        return $this->config->getFullApiUrl() . '/' . $endpoint . '.json';
-    }
+
 }

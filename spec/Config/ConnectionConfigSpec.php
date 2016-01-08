@@ -76,4 +76,11 @@ class ConnectionConfigSpec extends ObjectBehavior
         $this->getFullApiUrl()->shouldReturn('http://api.example.com/v3');
 
     }
+
+    function it_should_return_the_full_url_to_an_endpoint()
+    {
+
+        $this->beConstructedWith('KEY', 'SECRET', 'http://api.example.com');
+        $this->getApiEndpointUrl('endpoint')->shouldReturn('http://api.example.com/v3/endpoint.json');
+    }
 }

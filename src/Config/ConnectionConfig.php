@@ -121,4 +121,18 @@ class ConnectionConfig
 
         return implode('/', $url);
     }
+
+    /**
+     * Get the entire URL including endpoint.
+     *
+     * @param string $endpoint
+     *   The endpoint you wish to query (e.g.. ResearchKeywordsGetListRelatedKeywords)
+     *
+     * @return string
+     *   The full URL to the endpoint you want to query.
+     */
+    public function getApiEndpointUrl($endpoint)
+    {
+        return $this->getFullApiUrl() . '/' . $endpoint . '.json';
+    }
 }
