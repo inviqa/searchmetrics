@@ -83,15 +83,15 @@ class GuzzleConnection implements Connection
     /**
      * Get the OAuth2 subscriber based on our credentials.
      *
-     * @param GrantTypeInterface $grant_type
+     * @param GrantTypeInterface $grantType
      *   The grant type as returned by getGrantType().
      *
      * @return \CommerceGuys\Guzzle\Oauth2\Oauth2Subscriber
      *   An OAuth 2 subscriber for use in client connections.
      */
-    private function getOauth2Subscriber(GrantTypeInterface $grant_type)
+    private function getOauth2Subscriber(GrantTypeInterface $grantType)
     {
-        return new Oauth2Subscriber($grant_type);
+        return new Oauth2Subscriber($grantType);
     }
 
     /**
@@ -104,12 +104,12 @@ class GuzzleConnection implements Connection
     {
 
         // Authorization client - this is used to request OAuth access tokens.
-        $auth_client = new Client([
+        $authClient = new Client([
             // URL for access_token request.
             'base_url' => $this->config->getFullApiUrl(),
         ]);
 
-        return $auth_client;
+        return $authClient;
     }
 
     /**
@@ -121,16 +121,16 @@ class GuzzleConnection implements Connection
      * @return \CommerceGuys\Guzzle\Oauth2\GrantType\ClientCredentials
      *   A grant type containing client credentials.
      */
-    private function getGrantType(ClientInterface $auth_client)
+    private function getGrantType(ClientInterface $authClient)
     {
 
-        $auth_config = [
+        $authConfig = [
             "client_id" => $this->config->getApiKey(),
             "client_secret" => $this->config->getApiSecret(),
             "token_url" => $this->config->getApiVersion() . '/token',
         ];
 
-        return new ClientCredentials($auth_client, $auth_config);
+        return new ClientCredentials($authClient, $authConfig);
 
     }
 
@@ -183,7 +183,7 @@ class GuzzleConnection implements Connection
      *   The JSON response from the Searchmetrics API, or an empty array if no
      *   response was given or if the status code was incorrect.
      */
-    private function makeRequest(RequestInterface $request, $method = 'GET')
+    private function makeRequest(RequestInterface $request)
     {
 
         $response = $this->httpClient->send($request);
@@ -211,18 +211,18 @@ class GuzzleConnection implements Connection
     protected function checkStatusCode(ResponseInterface $response)
     {
 
-        $status_code = $response->getStatusCode();
+        $statusCode = $response->getStatusCode();
 
-        if ($status_code !== StatusCode::OK) {
+        if ($statusCode !== StatusCode::OK) {
 
             throw new HttpException(
                 $response->getBody(),
-                $status_code
+                $statusCode
             );
 
         }
 
-        return $status_code;
+        return $statusCode;
 
-    }
+    }/**/
 }
