@@ -7,8 +7,9 @@ php:
   - 7.0
   - hhvm
 
-allow_failures:
-  - php: 5.4
+matrix:
+  allow_failures:
+    - php: 5.4
 
 before_install:
   - composer self-update
