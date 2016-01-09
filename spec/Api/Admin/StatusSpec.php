@@ -31,11 +31,16 @@ class StatusSpec extends ObjectBehavior
 
         $response = new Response(200);
 
-        $connection->makeGetRequest('AdminStatusGetListProjects', Argument::any())
+        $expectedArgs = [
+            'limit' => 50,
+            'offset' => 5
+        ];
+
+        $connection->makeGetRequest('AdminStatusGetListProjects', $expectedArgs)
             ->shouldBeCalled()
             ->willReturn([]);
 
-        $this->getListProjects()->shouldBeArray();
+        $this->getListProjects(50, 5)->shouldBeArray();
 
     }
 
@@ -44,12 +49,16 @@ class StatusSpec extends ObjectBehavior
 
         $response = new Response(200);
 
-        $connection->makeGetRequest('AdminStatusGetListProjectSearchEngines', Argument::any())
+        $expectedArgs = [
+            'project_id' => 50,
+        ];
+
+        $connection->makeGetRequest('AdminStatusGetListProjectSearchEngines', $expectedArgs)
             ->shouldBeCalled()
             ->willReturn([]);
 
 
-        $this->getListProjectSearchEngines(Argument::any())->shouldBeArray();
+        $this->getListProjectSearchEngines(50)->shouldBeArray();
 
     }
 }
