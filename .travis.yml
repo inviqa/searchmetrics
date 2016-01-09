@@ -17,10 +17,6 @@ before_install:
 install:
   - composer install
 
-before_script:
-  # Prepare Codeception to run.
-  - vendor/bin/codecept build
-
 script:
   - vendir/bin/phpcs src --standard=PSR2
   - vendor/bin/phpspec run --format=pretty
