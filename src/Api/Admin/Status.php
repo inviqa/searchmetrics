@@ -52,7 +52,7 @@ class Status extends ApiEndpoint
     public function getListProjectSearchEngines($project_id)
     {
 
-        return $this->connection->makeGetRequest(self::LIST_PROJECT_SEARCH_ENGINES_ENDPOINT, compact($project_id));
+        return $this->connection->makeGetRequest(self::LIST_PROJECT_SEARCH_ENGINES_ENDPOINT, compact('project_id'));
 
     }
 }
