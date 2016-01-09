@@ -1,12 +1,4 @@
-<?php
-
-/**
- * @file
- *
- */
-
-namespace Searchmetrics\Connection;
-
+<?php namespace Searchmetrics\Connection;
 
 /**
  * Class GuzzleConnection.

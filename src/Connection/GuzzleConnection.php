@@ -225,6 +225,4 @@ class GuzzleConnection implements Connection
         return $status_code;
 
     }
-
-
 }
