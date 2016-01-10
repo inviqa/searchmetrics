@@ -16,6 +16,7 @@ class StatusSpec extends ObjectBehavior
     {
         $this->beConstructedWith($connection);
     }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Searchmetrics\Api\Admin\Status');
