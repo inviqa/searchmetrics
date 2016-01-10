@@ -2,8 +2,6 @@
 
 namespace spec\Searchmetrics\Api\Admin;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Message\Response;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Searchmetrics\Connection\Connection;
