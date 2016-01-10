@@ -32,12 +32,9 @@ class Status extends ApiEndpoint
     public function getListProjects($limit = 10, $offset = 0)
     {
 
-        $args = [
-            'limit',
-            'offset',
-        ];
+        $args = compact('limit', 'offset');
 
-        return $this->connection->makeGetRequest(self::LIST_PROJECTS_ENDPOINT, compact($args));
+        return $this->connection->makeGetRequest(self::LIST_PROJECTS_ENDPOINT, $args);
 
     }
 
@@ -52,7 +49,9 @@ class Status extends ApiEndpoint
     public function getListProjectSearchEngines($project_id)
     {
 
-        return $this->connection->makeGetRequest(self::LIST_PROJECT_SEARCH_ENGINES_ENDPOINT, compact('project_id'));
+        $args = compact('project_id');
+
+        return $this->connection->makeGetRequest(self::LIST_PROJECT_SEARCH_ENGINES_ENDPOINT, $args);
 
     }
 }
