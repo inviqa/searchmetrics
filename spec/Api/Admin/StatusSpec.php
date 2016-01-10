@@ -29,8 +29,6 @@ class StatusSpec extends ObjectBehavior
     function it_should_be_able_to_hit_the_project_endpoint(Connection $connection)
     {
 
-        $response = new Response(200);
-
         $expectedArgs = [
             'limit' => 50,
             'offset' => 5
@@ -46,8 +44,6 @@ class StatusSpec extends ObjectBehavior
 
     function it_should_be_able_to_hit_search_engines_endpoint(Connection $connection)
     {
-
-        $response = new Response(200);
 
         $expectedArgs = [
             'project_id' => 50,

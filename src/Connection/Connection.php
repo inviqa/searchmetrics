@@ -33,11 +33,11 @@ interface Connection
      *
      * @param string $endpoint
      *   The endpoint to make the request against.
-     * @param array $query
+     * @param array $queryParams
      *   The query to send to the API.
      *
      * @return array
      *   Result of the API request.
      */
-    public function makeGetRequest($endpoint, $query_params = []);
+    public function makeGetRequest($endpoint, $queryParams = []);
 }

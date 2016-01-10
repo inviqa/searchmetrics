@@ -155,14 +155,14 @@ class GuzzleConnection implements Connection
     /**
      * {inheritDoc}
      */
-    public function makeGetRequest($endpoint, $query_params = [])
+    public function makeGetRequest($endpoint, $queryParams = [])
     {
 
         $request = $this->httpClient->createRequest(
             'get',
             $this->config->getApiEndpointUrl($endpoint),
             [
-                'query' => $query_params,
+                'query' => $queryParams,
             ]
         );
 
