@@ -21,4 +21,4 @@ install:
 
 script:
   - vendor/bin/phpcs src --standard=PSR2
-  - vendor/bin/phpspec run --format=pretty
+  - vendor/bin/phpspec run

@@ -1,3 +1,4 @@
+formatter.name: pretty
 suites:
   searchmetrics-api:
     namespace: Searchmetrics
