@@ -47,7 +47,7 @@ class Optimization extends ApiEndpoint
         $text = null
     ) {
 
-        $body_args = compact(
+        $args = compact(
             'keyword',
             'project_id',
             'se_id',
@@ -56,7 +56,7 @@ class Optimization extends ApiEndpoint
             'text'
         );
 
-        return $this->connection->makePostRequest(self::POST_CONTENT_REQUEST_ENDPOINT, $body_args);
+        return $this->connection->makePostRequest(self::POST_CONTENT_REQUEST_ENDPOINT, $args);
 
     }
 
