@@ -65,6 +65,7 @@ class OptimizationSpec extends ObjectBehavior
             'crawl_id' => '1',
             'project_id' => '2',
             'limit' => '10',
+            'offset' => '1',
             'sort' => '-must-have',
             'type' => 'proof',
             'show' => 'keywords',
@@ -74,7 +75,7 @@ class OptimizationSpec extends ObjectBehavior
             ->shouldBeCalled()
             ->willReturn([]);
 
-        $this->getListContentDetail(1, 2, 10, '-must-have', 'proof', 'keywords')->shouldBeArray();
+        $this->getListContentDetail(1, 2, 10, 1, '-must-have', 'proof', 'keywords')->shouldBeArray();
 
     }
 }
