@@ -27,7 +27,7 @@ class Status extends ApiEndpoint
      * @see http://api.searchmetrics.com/v3/documentation/api-calls/service/AdminStatusGetListProjects
      *
      * @return array
-     *   The response AdminStatusGetListProjects from the endpoint.
+     *   The response from the AdminStatusGetListProjects endpoint.
      */
     public function getListProjects($limit = 10, $offset = 0)
     {
