@@ -9,6 +9,9 @@ engines:
     enabled: true
   phpmd:
     enabled: true
+    checks:
+      Controversial/CamelCaseParameterName:
+        enabled: false
   phpcodesniffer:
     enabled: true
     config:
