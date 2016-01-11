@@ -1,0 +1,28 @@
+{
+  "name": "inviqa/searchmetrics",
+  "description": "Searchmetrics API v3 integration",
+  "version": "0.0.1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matt Chapman",
+      "email": "mchapman@inviqa.com"
+        }
+    ],
+  "autoload":
+  {
+    "psr-4":
+    {
+      "Searchmetrics\\": "src/"
+    }
+  },
+  "require": {
+    "commerceguys/guzzle-oauth2-plugin": "~2.0",
+    "shrikeh/teapot": "^1.0"
+  },
+  "require-dev":
+  {
+    "phpspec/phpspec": "~2.4",
+    "squizlabs/php_codesniffer": "^2.5"
+  }
+}
