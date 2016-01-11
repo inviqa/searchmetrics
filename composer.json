@@ -18,7 +18,9 @@
   },
   "require": {
     "commerceguys/guzzle-oauth2-plugin": "~2.0",
-    "shrikeh/teapot": "^1.0"
+    "shrikeh/teapot": "^1.0",
+    "symfony/dom-crawler": "^3.0",
+    "symfony/css-selector": "^3.0"
   },
   "require-dev":
   {
