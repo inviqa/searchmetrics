@@ -42,9 +42,7 @@ class MarkupParser
      */
     public function getCrawler()
     {
-
         return $this->crawler;
-
     }
 
     /**
@@ -55,9 +53,7 @@ class MarkupParser
      */
     public function getMarkup()
     {
-
         return $this->crawler->html();
-
     }
 
     /**
@@ -92,6 +88,39 @@ class MarkupParser
         $headings = $this->crawler->filter($heading);
         return $headings->extract('_text');
 
+    }
+
+    /**
+     * Get a list of all words in the provided markup.
+     *
+     * @return array
+     *   An array of words usage counts used in the markup snippet provided, keyed by word. Sorted from highest
+     *   frequency to lowest.
+     */
+    public function getTerms()
+    {
+
+        // Remove tags and lowercase all words to prevent duplicates.
+        $cleanMarkup = strip_tags(strtolower($this->getMarkup()));
+
+        // Count the output and sort from highest to lowest.
+        $words = array_count_values(str_word_count($cleanMarkup, 1));
+        asort($words);
+        $words = array_reverse($words);
+
+        return $words;
+
+    }
+
+    /**
+     * Get a word count of the provided markup.
+     *
+     * @return int
+     *  Count the words in the markup string provided.
+     */
+    public function getTermCount()
+    {
+        return count($this->getTerms());
     }
 
 

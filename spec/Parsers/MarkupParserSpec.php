@@ -61,8 +61,13 @@ class MarkupParserSpec extends ObjectBehavior
         ]);
     }
 
+    function it_gets_the_word_count()
+    {
+        $this->getTermCount()->shouldReturn(79);
+    }
     private function getMarkupFixture()
     {
         return file_get_contents(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'htmlFixture.html');
     }
+
 }
