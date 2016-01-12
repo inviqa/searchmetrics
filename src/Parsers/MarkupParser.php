@@ -122,6 +122,4 @@ class MarkupParser
     {
         return count($this->getTerms());
     }
-
-
 }
