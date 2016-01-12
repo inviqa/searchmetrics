@@ -29,6 +29,25 @@ class MarkupParserSpec extends ObjectBehavior
         $this->getMarkup()->shouldReturn($expectation);
     }
 
+    function it_should_be_able_to_get_the_number_of_heading_tags()
+    {
+        $this->getTagCount('h1')->shouldReturn(1);
+        $this->getTagCount('h2')->shouldReturn(2);
+
+    }
+
+    function it_should_be_able_to_get_the_number_of_image_tags()
+    {
+        $this->getTagCount('img')->shouldReturn(1);
+    }
+
+    function it_should_be_able_to_get_a_count_of_any_tag()
+    {
+        $this->getTagCount('blockquote')->shouldReturn(1);
+        $this->getTagCount('p')->shouldReturn(1);
+        $this->getTagCount('li')->shouldReturn(3);
+    }
+
     private function getMarkupFixture()
     {
         return file_get_contents(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'htmlFixture.html');

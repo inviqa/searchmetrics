@@ -13,7 +13,7 @@ class MarkupParser
     /**
      * @var \Symfony\Component\DomCrawler\Crawler
      */
-    private $markup;
+    private $crawler;
 
     /**
      * MarkupParser constructor.
@@ -30,7 +30,7 @@ class MarkupParser
             $markup = new Crawler($markup);
         }
 
-        $this->markup = $markup;
+        $this->crawler = $markup;
 
     }
 
@@ -43,7 +43,7 @@ class MarkupParser
     public function getCrawler()
     {
 
-        return $this->markup;
+        return $this->crawler;
 
     }
 
@@ -56,7 +56,24 @@ class MarkupParser
     public function getMarkup()
     {
 
-        return $this->markup->html();
+        return $this->crawler->html();
+
+    }
+
+    /**
+     * Get the amount of tags present in the provided HTML string.
+     *
+     * @param string $tag
+     *   The HTML tag to count in the provided HTML string.
+     *
+     * @return int
+     *   The amount of required tags present in the provided markup.
+     */
+    public function getTagCount($tag)
+    {
+
+        $elements = $this->crawler->filter($tag);
+        return count($elements);
 
     }
 
