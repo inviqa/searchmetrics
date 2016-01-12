@@ -1,15 +1,14 @@
-<?php namespace Searchmetrics\Parsers;
+<?php
+
+namespace Searchmetrics\Parsers;
 
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class MarkupParser.
- *
- * @package Searchmetrics\Parsers
  */
 class MarkupParser
 {
-
     /**
      * @var \Symfony\Component\DomCrawler\Crawler
      */
@@ -19,7 +18,7 @@ class MarkupParser
      * MarkupParser constructor.
      *
      * @param string|Crawler $markup
-     *   The markup string to parse. You can also pass an instantiated Symfony DomCrawler instance.
+     *                               The markup string to parse. You can also pass an instantiated Symfony DomCrawler instance.
      */
     public function __construct($markup)
     {
@@ -31,14 +30,13 @@ class MarkupParser
         }
 
         $this->crawler = $markup;
-
     }
 
     /**
      * Get the DomCrawler instance created from markup provided during class instantiation.
      *
      * @return Crawler
-     *   The DomCrawler instance created from markup provided during class instantiation.
+     *                 The DomCrawler instance created from markup provided during class instantiation.
      */
     public function getCrawler()
     {
@@ -49,7 +47,7 @@ class MarkupParser
      * Get the raw markup that was provided to the class during instantiation.
      *
      * @return string
-     *   The raw markup that was provided to the class during instantiation.
+     *                The raw markup that was provided to the class during instantiation.
      */
     public function getMarkup()
     {
@@ -60,42 +58,40 @@ class MarkupParser
      * Get the amount of tags present in the provided HTML string.
      *
      * @param string $tag
-     *   The HTML tag to count in the provided HTML string.
+     *                    The HTML tag to count in the provided HTML string.
      *
      * @return int
-     *   The amount of required tags present in the provided markup.
+     *             The amount of required tags present in the provided markup.
      */
     public function getTagCount($tag)
     {
-
         $elements = $this->crawler->filter($tag);
-        return count($elements);
 
+        return count($elements);
     }
 
     /**
      * Get the content in the headings of the provided markup.
      *
      * @param string $heading
-     *   The level of heading to grab the content for. Defaults to H1.
+     *                        The level of heading to grab the content for. Defaults to H1.
      *
      * @return array
-     *   An array containing the contents of all required heading elements in the provided markup.
+     *               An array containing the contents of all required heading elements in the provided markup.
      */
     public function getHeadingContent($heading = 'h1')
     {
-
         $headings = $this->crawler->filter($heading);
-        return $headings->extract('_text');
 
+        return $headings->extract('_text');
     }
 
     /**
      * Get a list of all words in the provided markup.
      *
      * @return array
-     *   An array of words usage counts used in the markup snippet provided, keyed by word. Sorted from highest
-     *   frequency to lowest.
+     *               An array of words usage counts used in the markup snippet provided, keyed by word. Sorted from highest
+     *               frequency to lowest.
      */
     public function getTerms()
     {
@@ -109,14 +105,13 @@ class MarkupParser
         $words = array_reverse($words);
 
         return $words;
-
     }
 
     /**
      * Get a word count of the provided markup.
      *
      * @return int
-     *  Count the words in the markup string provided.
+     *             Count the words in the markup string provided.
      */
     public function getTermCount()
     {

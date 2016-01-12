@@ -1,7 +1,8 @@
-<?php namespace spec\Searchmetrics\Factory\Api;
+<?php
+
+namespace spec\Searchmetrics\Factory\Api;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Searchmetrics\Api\Project\Optimization;
 use Searchmetrics\Config\ConnectionConfig;
 use Searchmetrics\Connection\Connection;
@@ -10,7 +11,6 @@ use Searchmetrics\Factory\Api\EndpointClassDoesNotExistException;
 
 class ProjectApiFactorySpec extends ObjectBehavior
 {
-
     function it_is_initializable()
     {
         $this->shouldHaveType('Searchmetrics\Factory\Api\ProjectApiFactory');

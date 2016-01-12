@@ -1,4 +1,6 @@
-<?php namespace Searchmetrics\Connection;
+<?php
+
+namespace Searchmetrics\Connection;
 
 use CommerceGuys\Guzzle\Oauth2\GrantType\ClientCredentials;
 use CommerceGuys\Guzzle\Oauth2\GrantType\GrantTypeInterface;
@@ -13,12 +15,9 @@ use GuzzleHttp\Message\ResponseInterface;
 
 /**
  * Class GuzzleConnection.
- *
- * @package Searchmetrics\Connection
  */
 class GuzzleConnection implements Connection
 {
-
     /**
      * @var ConnectionConfig
      */
@@ -41,14 +40,12 @@ class GuzzleConnection implements Connection
      */
     public function __construct(ConnectionConfig $config)
     {
-
         $this->config = $config;
         $this->httpClient = $this->createClient();
-
     }
 
     /**
-     * {inheritDoc}
+     * {inheritDoc}.
      *
      * @return \GuzzleHttp\Client
      */
@@ -64,7 +61,6 @@ class GuzzleConnection implements Connection
      */
     private function createClient()
     {
-
         $authClient = $this->getAuthClient();
         $grantType = $this->getGrantType($authClient);
         $oauth2 = $this->getOauth2Subscriber($grantType);
@@ -73,21 +69,20 @@ class GuzzleConnection implements Connection
             'defaults' => [
                 'auth' => 'oauth2',
                 'subscribers' => [
-                    $oauth2
+                    $oauth2,
                 ],
             ],
         ]);
-
     }
 
     /**
      * Get the OAuth2 subscriber based on our credentials.
      *
      * @param GrantTypeInterface $grantType
-     *   The grant type as returned by getGrantType().
+     *                                      The grant type as returned by getGrantType().
      *
      * @return \CommerceGuys\Guzzle\Oauth2\Oauth2Subscriber
-     *   An OAuth 2 subscriber for use in client connections.
+     *                                                      An OAuth 2 subscriber for use in client connections.
      */
     private function getOauth2Subscriber(GrantTypeInterface $grantType)
     {
@@ -98,7 +93,7 @@ class GuzzleConnection implements Connection
      * Get the client object for getting the security token.
      *
      * @return \GuzzleHttp\Client
-     *   A Guzzle\Client instance tied to the API URL.
+     *                            A Guzzle\Client instance tied to the API URL.
      */
     private function getAuthClient()
     {
@@ -116,30 +111,27 @@ class GuzzleConnection implements Connection
      * Get the Credentials for making any further connections.
      *
      * @param ClientInterface $auth_client
-     *   The initial, unauthenticated Guzzle Auth Client.
+     *                                     The initial, unauthenticated Guzzle Auth Client.
      *
      * @return \CommerceGuys\Guzzle\Oauth2\GrantType\ClientCredentials
-     *   A grant type containing client credentials.
+     *                                                                 A grant type containing client credentials.
      */
     private function getGrantType(ClientInterface $authClient)
     {
-
         $authConfig = [
-            "client_id" => $this->config->getApiKey(),
-            "client_secret" => $this->config->getApiSecret(),
-            "token_url" => $this->config->getApiVersion() . '/token',
+            'client_id' => $this->config->getApiKey(),
+            'client_secret' => $this->config->getApiSecret(),
+            'token_url' => $this->config->getApiVersion().'/token',
         ];
 
         return new ClientCredentials($authClient, $authConfig);
-
     }
 
     /**
-     * {inheritDoc}
+     * {inheritDoc}.
      */
     public function makePostRequest($endpoint, $body = [])
     {
-
         $request = $this->httpClient->createRequest(
             'post',
             $this->config->getApiEndpointUrl($endpoint),
@@ -149,15 +141,13 @@ class GuzzleConnection implements Connection
         );
 
         return $this->makeRequest($request);
-
     }
 
     /**
-     * {inheritDoc}
+     * {inheritDoc}.
      */
     public function makeGetRequest($endpoint, $queryParams = [])
     {
-
         $request = $this->httpClient->createRequest(
             'get',
             $this->config->getApiEndpointUrl($endpoint),
@@ -167,25 +157,23 @@ class GuzzleConnection implements Connection
         );
 
         return $this->makeRequest($request);
-
     }
 
     /**
      * A lower level way to submit a request to the Searchmetrics API.
      *
      * @param RequestInterface $request
-     *    A Guzzle request instance.
+     *                                  A Guzzle request instance.
      *
      * @see SearchmetricsApiBase::makeGetRequest()
      * @see SearchmetricsApiBase::makePostRequest()
      *
      * @return array
-     *   The JSON response from the Searchmetrics API, or an empty array if no
-     *   response was given or if the status code was incorrect.
+     *               The JSON response from the Searchmetrics API, or an empty array if no
+     *               response was given or if the status code was incorrect.
      */
     private function makeRequest(RequestInterface $request)
     {
-
         $response = $this->httpClient->send($request);
 
         $this->checkStatusCode($response);
@@ -193,36 +181,31 @@ class GuzzleConnection implements Connection
         $json = $response->json();
 
         return $json;
-
     }
 
     /**
      * Check the status code of a request.
      *
      * @param ResponseInterface $response
-     *   The Guzzle response object to check the status code for.
+     *                                    The Guzzle response object to check the status code for.
      *
      * @throws HttpException
-     *   Thrown when the status code is anything other than 200.
+     *                       Thrown when the status code is anything other than 200.
      *
      * @return int
-     *   200 if the response is OK. Otherwise an exception is thrown.
+     *             200 if the response is OK. Otherwise an exception is thrown.
      */
     protected function checkStatusCode(ResponseInterface $response)
     {
-
         $statusCode = $response->getStatusCode();
 
         if ($statusCode !== StatusCode::OK) {
-
             throw new HttpException(
                 $response->getBody(),
                 $statusCode
             );
-
         }
 
         return $statusCode;
-
     }
 }

@@ -1,12 +1,12 @@
-<?php namespace spec\Searchmetrics\Api\Project;
+<?php
+
+namespace spec\Searchmetrics\Api\Project;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Searchmetrics\Connection\Connection;
 
 class OptimizationSpec extends ObjectBehavior
 {
-
     function let(Connection $connection)
     {
         $this->beConstructedWith($connection);
@@ -24,7 +24,6 @@ class OptimizationSpec extends ObjectBehavior
 
     function it_should_be_able_to_hit_the_project_optimization_post_value_content_request_endpoint(Connection $connection)
     {
-
         $expectedArgs = [
             'keyword' => 'foo',
             'project_id' => 1,
@@ -39,12 +38,10 @@ class OptimizationSpec extends ObjectBehavior
             ->willReturn([]);
 
         $this->postValueContentRequest('foo', 1, 2, 'bar,baz,qux', 'title', '<h1 class="title">My title</h1>')->shouldBeArray();
-
     }
 
     function it_should_be_able_to_hit_the_project_optimization_get_list_content_status_endpoint(Connection $connection)
     {
-
         $expectedArgs = [
             'crawl_id' => 1,
             'project_id' => 2,
@@ -55,12 +52,10 @@ class OptimizationSpec extends ObjectBehavior
             ->willReturn([]);
 
         $this->getListContentStatus(1, 2)->shouldBeArray();
-
     }
 
     function it_should_be_able_to_hit_the_project_optimization_get_list_content_detail_endpoint(Connection $connection)
     {
-
         $expectedArgs = [
             'crawl_id' => '1',
             'project_id' => '2',
@@ -76,6 +71,5 @@ class OptimizationSpec extends ObjectBehavior
             ->willReturn([]);
 
         $this->getListContentDetail(1, 2, 10, 1, '-must-have', 'proof', 'keywords')->shouldBeArray();
-
     }
 }
