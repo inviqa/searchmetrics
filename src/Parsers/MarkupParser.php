@@ -77,5 +77,22 @@ class MarkupParser
 
     }
 
+    /**
+     * Get the content in the headings of the provided markup.
+     *
+     * @param string $heading
+     *   The level of heading to grab the content for. Defaults to H1.
+     *
+     * @return array
+     *   An array containing the contents of all required heading elements in the provided markup.
+     */
+    public function getHeadingContent($heading = 'h1')
+    {
+
+        $headings = $this->crawler->filter($heading);
+        return $headings->extract('_text');
+
+    }
+
 
 }

@@ -48,6 +48,19 @@ class MarkupParserSpec extends ObjectBehavior
         $this->getTagCount('li')->shouldReturn(3);
     }
 
+    function it_should_get_h1_content()
+    {
+        $this->getHeadingContent('h1')->shouldReturn(['With great power comes great responsibility']);
+    }
+
+    function it_should_get_h2_content()
+    {
+        $this->getHeadingContent('h2')->shouldReturn([
+            'Go web! Fly! Up, up, and away web! Shazaam! Go! Go! Go web go! Tally ho.',
+            'Spider Man will always have enemies. I can\'t let you take that risk.',
+        ]);
+    }
+
     private function getMarkupFixture()
     {
         return file_get_contents(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'htmlFixture.html');
