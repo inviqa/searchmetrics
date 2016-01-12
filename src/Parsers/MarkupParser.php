@@ -65,7 +65,7 @@ class MarkupParser
      * @return int
      *   The amount of required tags present in the provided markup.
      */
-    public function getTagCount($tag)
+    public function getElementCount($tag)
     {
 
         $elements = $this->crawler->filter($tag);
@@ -135,11 +135,11 @@ class MarkupParser
         $crawl = [
             'url' => 'text',
             'elements' => [
-                'h1' => $this->getTagCount('h1'),
-                'h2' => $this->getTagCount('h2'),
-                'img' => $this->getTagCount('img'),
-                'video' => $this->getTagCount('video'),
-                'author' => $this->getTagCount('author'),
+                'h1' => $this->getElementCount('h1'),
+                'h2' => $this->getElementCount('h2'),
+                'img' => $this->getElementCount('img'),
+                'video' => $this->getElementCount('video'),
+                'author' => $this->getElementCount('author'),
             ],
             'termCount' => $this->getTermCount(),
         ];
