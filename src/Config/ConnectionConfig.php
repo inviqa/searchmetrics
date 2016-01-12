@@ -4,12 +4,9 @@ namespace Searchmetrics\Config;
 
 /**
  * Class ConnectionConfig.
- *
- * @package Searchmetrics\Config
  */
 class ConnectionConfig
 {
-
     /**
      * @var string
      */
@@ -34,22 +31,20 @@ class ConnectionConfig
      * ConnectionConfig constructor.
      *
      * @param string $apiKey
-     *   The public API key for the account to connect to Searchmetrics with.
+     *                          The public API key for the account to connect to Searchmetrics with.
      * @param string $apiSecret
-     *   The secret API key for the account to connect to Searchmetrics with.
+     *                          The secret API key for the account to connect to Searchmetrics with.
      * @param string $apiUrl
-     *   The URL for the Searchmetrics endpoint (default: api.searchmetrics.com)
+     *                          The URL for the Searchmetrics endpoint (default: api.searchmetrics.com)
      */
     public function __construct(
         $apiKey,
         $apiSecret,
         $apiUrl = 'api.searchmetrics.com'
     ) {
-
         $this->apiKey = $apiKey;
         $this->apiSecret = $apiSecret;
         $this->apiUrl = $apiUrl;
-
     }
 
     /**
@@ -100,11 +95,10 @@ class ConnectionConfig
      * be corrected, so it may result in an error.
      *
      * @return string
-     *   The full URL with a non-secure HTTP prepended if not provided.
+     *                The full URL with a non-secure HTTP prepended if not provided.
      */
     public function getFullApiUrl()
     {
-
         $url = [];
 
         if (preg_match('/^https?:\/\//', $this->apiUrl) !== 1) {
@@ -126,13 +120,13 @@ class ConnectionConfig
      * Get the entire URL including endpoint.
      *
      * @param string $endpoint
-     *   The endpoint you wish to query (e.g.. ResearchKeywordsGetListRelatedKeywords)
+     *                         The endpoint you wish to query (e.g.. ResearchKeywordsGetListRelatedKeywords)
      *
      * @return string
-     *   The full URL to the endpoint you want to query.
+     *                The full URL to the endpoint you want to query.
      */
     public function getApiEndpointUrl($endpoint)
     {
-        return $this->getFullApiUrl() . '/' . $endpoint . '.json';
+        return $this->getFullApiUrl().'/'.$endpoint.'.json';
     }
 }

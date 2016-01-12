@@ -1,9 +1,9 @@
-<?php namespace Searchmetrics\Connection;
+<?php
+
+namespace Searchmetrics\Connection;
 
 /**
  * Class GuzzleConnection.
- *
- * @package Searchmetrics\Connection
  */
 interface Connection
 {
@@ -11,7 +11,7 @@ interface Connection
      * Get the connection instance to the established Searchmetrics session.
      *
      * @return \GuzzleHttp\Client
-     *   A Guzzle client instance that represents the connection to Searchmetrics.
+     *                            A Guzzle client instance that represents the connection to Searchmetrics.
      */
     public function getClient();
 
@@ -19,12 +19,12 @@ interface Connection
      * Make a POST request to the Searchmetrics API.
      *
      * @param string $endpoint
-     *   The endpoint to make the request against.
-     * @param array $body
-     *   The data to send to the API.
+     *                         The endpoint to make the request against.
+     * @param array  $body
+     *                         The data to send to the API.
      *
      * @return array
-     *   Result of the API request.
+     *               Result of the API request.
      */
     public function makePostRequest($endpoint, $body = []);
 
@@ -32,12 +32,12 @@ interface Connection
      * Make a GET request to the Searchmetrics API.
      *
      * @param string $endpoint
-     *   The endpoint to make the request against.
-     * @param array $queryParams
-     *   The query to send to the API.
+     *                            The endpoint to make the request against.
+     * @param array  $queryParams
+     *                            The query to send to the API.
      *
      * @return array
-     *   Result of the API request.
+     *               Result of the API request.
      */
     public function makeGetRequest($endpoint, $queryParams = []);
 }

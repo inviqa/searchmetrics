@@ -1,12 +1,12 @@
-<?php namespace spec\Searchmetrics\Parsers;
+<?php
+
+namespace spec\Searchmetrics\Parsers;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Symfony\Component\DomCrawler\Crawler;
 
 class MarkupParserSpec extends ObjectBehavior
 {
-
     function let()
     {
         $this->beConstructedWith($this->getMarkupFixture());
@@ -33,7 +33,6 @@ class MarkupParserSpec extends ObjectBehavior
     {
         $this->getTagCount('h1')->shouldReturn(1);
         $this->getTagCount('h2')->shouldReturn(2);
-
     }
 
     function it_should_be_able_to_get_the_number_of_image_tags()
@@ -67,7 +66,6 @@ class MarkupParserSpec extends ObjectBehavior
     }
     private function getMarkupFixture()
     {
-        return file_get_contents(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'htmlFixture.html');
+        return file_get_contents(dirname(__DIR__).DIRECTORY_SEPARATOR.'htmlFixture.html');
     }
-
 }

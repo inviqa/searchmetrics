@@ -1,9 +1,9 @@
-<?php namespace spec\Searchmetrics\Factory\Api;
+<?php
 
-use GuzzleHttp\Client;
+namespace spec\Searchmetrics\Factory\Api;
+
 use GuzzleHttp\ClientInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Searchmetrics\Api\Admin\Status;
 use Searchmetrics\Config\ConnectionConfig;
 use Searchmetrics\Connection\Connection;
@@ -12,7 +12,6 @@ use Searchmetrics\Factory\Api\EndpointClassDoesNotExistException;
 
 class AdminApiFactorySpec extends ObjectBehavior
 {
-
     function it_is_initializable()
     {
         $this->shouldHaveType('Searchmetrics\Factory\Api\AdminApiFactory');

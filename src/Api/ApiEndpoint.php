@@ -1,15 +1,14 @@
-<?php namespace Searchmetrics\Api;
+<?php
+
+namespace Searchmetrics\Api;
 
 use Searchmetrics\Connection\Connection;
 
 /**
  * Class ApiEndpoint.
- *
- * @package Api
  */
 abstract class ApiEndpoint
 {
-
     /**
      * @var \Searchmetrics\Connection\Connection
      */

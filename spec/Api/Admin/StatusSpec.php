@@ -3,13 +3,11 @@
 namespace spec\Searchmetrics\Api\Admin;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Searchmetrics\Connection\Connection;
 use Searchmetrics\Connection\GuzzleConnection;
 
 class StatusSpec extends ObjectBehavior
 {
-
     function let(GuzzleConnection $connection)
     {
         $this->beConstructedWith($connection);
@@ -27,10 +25,9 @@ class StatusSpec extends ObjectBehavior
 
     function it_should_be_able_to_hit_the_project_endpoint(Connection $connection)
     {
-
         $expectedArgs = [
             'limit' => 50,
-            'offset' => 5
+            'offset' => 5,
         ];
 
         $connection->makeGetRequest('AdminStatusGetListProjects', $expectedArgs)
@@ -38,12 +35,10 @@ class StatusSpec extends ObjectBehavior
             ->willReturn([]);
 
         $this->getListProjects(50, 5)->shouldBeArray();
-
     }
 
     function it_should_be_able_to_hit_search_engines_endpoint(Connection $connection)
     {
-
         $expectedArgs = [
             'project_id' => 50,
         ];
@@ -52,8 +47,6 @@ class StatusSpec extends ObjectBehavior
             ->shouldBeCalled()
             ->willReturn([]);
 
-
         $this->getListProjectSearchEngines(50)->shouldBeArray();
-
     }
 }

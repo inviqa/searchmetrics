@@ -2,18 +2,10 @@
 
 namespace spec\Searchmetrics\Connection;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Subscriber\Mock;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Searchmetrics\Config\ConnectionConfig;
 use Searchmetrics\Connection\Connection;
-use Searchmetrics\Connection\ConnectionFactory;
-use Teapot\HttpException;
-use Teapot\StatusCode;
-use GuzzleHttp\Ring\Client\MockHandler;
 
 class GuzzleConnectionSpec extends ObjectBehavior
 {
