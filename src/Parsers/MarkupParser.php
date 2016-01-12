@@ -122,4 +122,29 @@ class MarkupParser
     {
         return count($this->getTerms());
     }
+
+    /**
+     * Get a duplicate of the API crawl key for the provided markup.
+     *
+     * @return array
+     *   An array of element counts that duplicate the response from Searchmetrics.
+     */
+    public function getApiCrawl()
+    {
+
+        $crawl = [
+            'url' => 'text',
+            'elements' => [
+                'h1' => $this->getTagCount('h1'),
+                'h2' => $this->getTagCount('h2'),
+                'img' => $this->getTagCount('img'),
+                'video' => $this->getTagCount('video'),
+                'author' => $this->getTagCount('author'),
+            ],
+            'termCount' => $this->getTermCount(),
+        ];
+
+        return $crawl;
+
+    }
 }
