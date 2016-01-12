@@ -1,15 +1,14 @@
-<?php namespace Searchmetrics\Api\Project;
+<?php
+
+namespace Searchmetrics\Api\Project;
 
 use Searchmetrics\Api\ApiEndpoint;
 
 /**
  * Class Optimization.
- *
- * @package Searchmetrics\Api\Project
  */
 class Optimization extends ApiEndpoint
 {
-
     /**
      * URL endpoint for creating a new Searchmetrics scan.
      */
@@ -27,8 +26,8 @@ class Optimization extends ApiEndpoint
 
     /**
      * @param string $keyword
-     * @param int $project_id
-     * @param int $se_id
+     * @param int    $project_id
+     * @param int    $se_id
      * @param string $additional_keywords
      * @param string $name
      * @param string $text
@@ -36,7 +35,7 @@ class Optimization extends ApiEndpoint
      * @see http://api.searchmetrics.com/v3/documentation/api-calls/service/ProjectOptimizationPostValueContentRequest
      *
      * @return array
-     *   The response from the ProjectOptimizationPostValueContentRequest endpoint.
+     *               The response from the ProjectOptimizationPostValueContentRequest endpoint.
      */
     public function postValueContentRequest(
         $keyword,
@@ -46,7 +45,6 @@ class Optimization extends ApiEndpoint
         $name = null,
         $text = null
     ) {
-
         $args = compact(
             'keyword',
             'project_id',
@@ -57,9 +55,7 @@ class Optimization extends ApiEndpoint
         );
 
         return $this->connection->makePostRequest(self::POST_CONTENT_REQUEST_ENDPOINT, $args);
-
     }
-
 
     /**
      * @param int $crawl_id
@@ -68,26 +64,23 @@ class Optimization extends ApiEndpoint
      * @see http://api.searchmetrics.com/v3/documentation/api-calls/service/ProjectOptimizationGetListContentStatus
      *
      * @return array
-     *   The response from the ProjectOptimizationGetListContentStatus endpoint.
+     *               The response from the ProjectOptimizationGetListContentStatus endpoint.
      */
     public function getListContentStatus($crawl_id, $project_id)
     {
-
         $args = compact(
             'crawl_id',
             'project_id'
         );
 
         return $this->connection->makeGetRequest(self::GET_LIST_CONTENT_STATUS_ENDPOINT, $args);
-
     }
 
-
     /**
-     * @param int $crawl_id
-     * @param int $project_id
-     * @param int $limit
-     * @param int $offset
+     * @param int    $crawl_id
+     * @param int    $project_id
+     * @param int    $limit
+     * @param int    $offset
      * @param string $sort
      * @param string $type
      * @param string $show
@@ -95,7 +88,7 @@ class Optimization extends ApiEndpoint
      * @see http://api.searchmetrics.com/v3/documentation/api-calls/service/ProjectOptimizationGetListContentDetail
      *
      * @return array
-     *   The response from the ProjectOptimizationGetListContentDetail endpoint.
+     *               The response from the ProjectOptimizationGetListContentDetail endpoint.
      */
     public function getListContentDetail(
         $crawl_id,
@@ -106,7 +99,6 @@ class Optimization extends ApiEndpoint
         $type = null,
         $show = null
     ) {
-
         $args = compact(
             'crawl_id',
             'project_id',
@@ -118,6 +110,5 @@ class Optimization extends ApiEndpoint
         );
 
         return $this->connection->makeGetRequest(self::GET_LIST_CONTENT_DETAIL_ENDPOINT, $args);
-
     }
 }
