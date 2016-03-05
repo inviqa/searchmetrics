@@ -142,4 +142,22 @@ class MarkupParser
 
     }
 
+    /**
+     * Get the count for the amount of terms in the provided markup.
+     *
+     * @param string $term
+     *   The term to look for in the provided markup.
+     *
+     * @return int
+     *   The number of times the provided string appears in the markup.
+     */
+    public function getKeywordFrequency($term)
+    {
+
+        $terms = $this->getTerms();
+
+        return (isset($terms[$term])) ? $terms[$term] : 0;
+
+    }
+
 }

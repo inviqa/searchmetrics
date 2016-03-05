@@ -84,6 +84,13 @@ class MarkupParserSpec extends ObjectBehavior
         $this->getKpiApiResponse()->shouldReturn($expectation);
     }
 
+    function it_should_be_able_to_get_the_own_term_frequency()
+    {
+        $term = 'knack';
+
+        $this->getKeywordFrequency($term)->shouldReturn(2);
+    }
+
     private function getMarkupFixture()
     {
         $markup = file_get_contents(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'htmlFixture.html');
