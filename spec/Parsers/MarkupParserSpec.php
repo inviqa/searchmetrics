@@ -26,7 +26,7 @@ class MarkupParserSpec extends ObjectBehavior
     {
         // The crawler can change formatting, which would cause this spec to fail. So here we're creating a new Crawler
         // instance and calling ->html() manually to we can test against a Crawler parsed version of our fixture.
-        $expectation = (new Crawler($this->getMarkupFixture()))->html();
+        $expectation = $this->getMarkupFixture()->html();
         $this->getMarkup()->shouldReturn($expectation);
     }
 
@@ -81,12 +81,14 @@ class MarkupParserSpec extends ObjectBehavior
             'termCount' => 79,
         ];
 
-        $this->getApiCrawl()->shouldReturn($expectation);
+        $this->getKpiApiResponse()->shouldReturn($expectation);
     }
 
     private function getMarkupFixture()
     {
-        return file_get_contents(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'htmlFixture.html');
+        $markup = file_get_contents(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'htmlFixture.html');
+
+        return new Crawler($markup);
     }
 
 }

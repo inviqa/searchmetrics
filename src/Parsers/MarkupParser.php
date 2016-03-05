@@ -21,14 +21,8 @@ class MarkupParser
      * @param string|Crawler $markup
      *   The markup string to parse. You can also pass an instantiated Symfony DomCrawler instance.
      */
-    public function __construct($markup)
+    public function __construct(Crawler $markup)
     {
-
-        // If the provided markup is not a DomCrawler instance, then convert it to one so we know what we're working
-        // with.
-        if (!$markup instanceof Crawler) {
-            $markup = new Crawler($markup);
-        }
 
         $this->crawler = $markup;
 
@@ -129,7 +123,7 @@ class MarkupParser
      * @return array
      *   An array of element counts that duplicate the response from Searchmetrics.
      */
-    public function getApiCrawl()
+    public function getKpiApiResponse()
     {
 
         $crawl = [
@@ -147,4 +141,5 @@ class MarkupParser
         return $crawl;
 
     }
+
 }
