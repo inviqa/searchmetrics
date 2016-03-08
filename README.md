@@ -8,6 +8,28 @@ Connection library for the Searchmetrics v3 API.
 
 ## Installation
 
-```
+```bash
 composer require inviqa/searchmetrics
 ```
+
+## Quickstart
+
+* Create a configuration object
+
+```php
+new Searchmetrics\Config\ConnectionConfig($apikey, $apisecret);
+```
+
+* Create an API endpoint class
+
+```php
+$api = Searchmetrics\Factory\Api\ProjectApiFactory::create($config, 'Optimization');
+```
+
+## Contributing
+
+Please ensure any contributions:
+
+* Are submitted with accompanying specs
+* Follow PSR-2 (with the exceptions of spec classes, which should follow the
+  format currently used by spec classes)
