@@ -26,6 +26,10 @@ new Searchmetrics\Config\ConnectionConfig($apikey, $apisecret);
 $api = Searchmetrics\Factory\Api\ProjectApiFactory::create($config, 'Optimization');
 ```
 
+## Useful pages
+
+* [Searchmetrics API endpoint documentation](http://api.searchmetrics.com/v3/documentation/api-calls)
+
 ## Contributing
 
 Please ensure any contributions:
