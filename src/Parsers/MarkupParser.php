@@ -114,7 +114,7 @@ class MarkupParser
      */
     public function getTermCount()
     {
-        return count($this->getTerms());
+        return array_sum($this->getTerms());
     }
 
     /**
@@ -159,5 +159,4 @@ class MarkupParser
         return (isset($terms[$term])) ? $terms[$term] : 0;
 
     }
-
 }

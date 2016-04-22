@@ -64,7 +64,7 @@ class MarkupParserSpec extends ObjectBehavior
 
     function it_gets_the_word_count()
     {
-        $this->getTermCount()->shouldReturn(79);
+        $this->getTermCount()->shouldReturn(127);
     }
 
     function it_should_get_an_array_containing_element_counts_like_the_api_response()
@@ -78,7 +78,7 @@ class MarkupParserSpec extends ObjectBehavior
                 'video' => 0,
                 'author' => 0,
             ],
-            'termCount' => 79,
+            'termCount' => 127,
         ];
 
         $this->getKpiApiResponse()->shouldReturn($expectation);
