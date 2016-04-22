@@ -159,5 +159,4 @@ class MarkupParser
         return (isset($terms[$term])) ? $terms[$term] : 0;
 
     }
-
 }
