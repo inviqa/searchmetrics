@@ -78,7 +78,7 @@ class MarkupParserSpec extends ObjectBehavior
                 'video' => 0,
                 'author' => 0,
             ],
-            'termCount' => 79,
+            'termCount' => 127,
         ];
 
         $this->getKpiApiResponse()->shouldReturn($expectation);
