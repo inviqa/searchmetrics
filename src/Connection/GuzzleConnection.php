@@ -218,7 +218,6 @@ class GuzzleConnection implements Connection
                 $response->getBody(),
                 $statusCode
             );
-
         }
 
         return $statusCode;
