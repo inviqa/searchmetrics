@@ -214,12 +214,10 @@ class GuzzleConnection implements Connection
         $statusCode = $response->getStatusCode();
 
         if ($statusCode !== StatusCode::OK) {
-
             throw new HttpException(
                 $response->getBody(),
                 $statusCode
             );
-
         }
 
         return $statusCode;
