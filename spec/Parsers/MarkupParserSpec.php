@@ -84,6 +84,18 @@ class MarkupParserSpec extends ObjectBehavior
         $this->getKpiApiResponse()->shouldReturn($expectation);
     }
 
+    function it_should_disregard_punctuation_marks_when_counting_words()
+    {
+        $term = 'i';
+        $this->getKeywordFrequency($term)->shouldReturn(6);
+    }
+
+    function it_should_regard_words_containing_apostrophes_as_distinct_terms()
+    {
+        $term = 'i\'m';
+        $this->getKeywordFrequency($term)->shouldReturn(1);
+    }
+
     function it_should_be_able_to_get_the_own_term_frequency()
     {
         $term = 'knack';
