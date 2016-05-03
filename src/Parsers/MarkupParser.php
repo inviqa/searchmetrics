@@ -97,9 +97,12 @@ class MarkupParser
         // Remove tags and lowercase all words to prevent duplicates.
         $cleanMarkup = strip_tags(strtolower($this->getMarkup()));
 
+        // Remove all punctuation except apostrophes.
+        $cleanMarkup = preg_replace('/[^a-z0-9\' ]+/i', ' ', $cleanMarkup);
+
         // Count the output and sort from highest to lowest.
-        $namePattern = '/[\s,:?!]+/u';
-        $wordsArray = preg_split($namePattern, $cleanMarkup, -1, PREG_SPLIT_NO_EMPTY);
+        $wordPattern = '/\s+/';
+        $wordsArray = preg_split($wordPattern, $cleanMarkup, -1, PREG_SPLIT_NO_EMPTY);
         $words = array_count_values($wordsArray);
         asort($words);
         $words = array_reverse($words);
