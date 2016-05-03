@@ -98,7 +98,9 @@ class MarkupParser
         $cleanMarkup = strip_tags(strtolower($this->getMarkup()));
 
         // Count the output and sort from highest to lowest.
-        $words = array_count_values(str_word_count($cleanMarkup, 1));
+        $namePattern = '/[\s,:?!]+/u';
+        $wordsArray = preg_split($namePattern, $cleanMarkup, -1, PREG_SPLIT_NO_EMPTY);
+        $words = array_count_values($wordsArray);
         asort($words);
         $words = array_reverse($words);
 
