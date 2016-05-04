@@ -98,7 +98,7 @@ class MarkupParser
         $cleanMarkup = strip_tags(strtolower($this->getMarkup()));
 
         // Remove all punctuation except apostrophes.
-        $cleanMarkup = preg_replace('/[^a-z0-9\' ]+/i', ' ', $cleanMarkup);
+        $cleanMarkup = preg_replace('/[^\w0-9\' ]+/iu', ' ', $cleanMarkup);
 
         // Count the output and sort from highest to lowest.
         $wordPattern = '/\s+/';
